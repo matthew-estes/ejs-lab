@@ -1,4 +1,3 @@
-const { name } = require("ejs");
 const express = require("express");
 const app = express();
 
@@ -56,27 +55,30 @@ const RESTAURANT = {
   ],
 };
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.render("home.ejs", {
     restaurant: RESTAURANT,
   });
 });
 
-app.get("/menu", function(req, res){
+app.get("/menu", function (req, res) {
   res.render("menu.ejs", {
     menu: RESTAURANT.menu,
   });
 });
 
-
-app.get("/menu/:category", function(req, res){
-  res.render("category.ejs", {
-    category: RESTAURANT.category,
-  });
+app.get("/menu/:category", function (req, res) {
+  let category = req.params.category;
+  let filteredMenu = RESTAURANT.menu.filter(
+    (item) => item.category === category
+  );
+    res.render("category.ejs", {
+      category: category,
+      menu: filteredMenu,
+    });
 });
-
-
 
 app.listen(3000, function () {
   console.log("Listening on port 3000");
 });
+
