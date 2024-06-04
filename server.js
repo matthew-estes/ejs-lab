@@ -7,9 +7,7 @@ app.get("/", function(req, res) {
 
 app.get("/menu", function(req, res){
   res.render("menu.ejs");
-}
-
-
+});
 
 const RESTAURANT = {
   name: "The Green Byte Bistro",
@@ -69,6 +67,6 @@ const RESTAURANT = {
 
 
 
-
-
-app.listen(3000);
+app.listen(3000, function () {
+  console.log("Listening on port 3000");
+});
