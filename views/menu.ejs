@@ -8,9 +8,28 @@
   <body>
     <%- include('./partials/nav') %>
     <h1>Full Menu</h1>
+    <% let mains =menu.filter(item => item.category === 'mains')%>
+    <% let desserts =menu.filter(item => item.category === 'desserts')%>
+    <% let sides =menu.filter(item => item.category === 'sides')%>
+    <h2>Mains</h2>
     <ul>
-      <% menu.forEach((item, index) => { %>
-      <li><%= item.name %>: $<%= item.price %> --- rated <%= item.rating %>/5</li>
+      <% mains.forEach((item, index) => { %>
+      <li><%= item.name %>: $<%= item.price %> (rated <%= item.rating %>/5 stars)</li>
+      <p><%= item.details %></p>
+      <%});%>
+    </ul>
+    <h2>Desserts</h2>
+    <ul>
+      <% desserts.forEach((item, index) => { %>
+      <li><%= item.name %>: $<%= item.price %> (rated <%= item.rating %>/5 stars)</li>
+      <p><%= item.details %></p>
+      <%});%>
+    </ul>
+    <h2>Sides</h2>
+    <ul>
+      <% sides.forEach((item, index) => { %>
+      <li><%= item.name %>: $<%= item.price %> (rated <%= item.rating %>/5 stars)</li>
+      <p><%= item.details %></p>
       <%});%>
     </ul>
   </body>

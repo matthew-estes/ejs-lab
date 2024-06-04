@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
 
-const RESTAURANT = {
+function captializeFirstLetter(string){
+  return (string.charAt(0).toUpperCase() + string.slice(1));
+ };
+
+ const RESTAURANT = {
   name: "The Green Byte Bistro",
   isOpen: true,
   address: "742 Evergreen Rd, Mapleview, OS 45502",
@@ -72,8 +76,10 @@ app.get("/menu/:category", function (req, res) {
   let filteredMenu = RESTAURANT.menu.filter(
     (item) => item.category === category
   );
+  let capitalizedCategory = captializeFirstLetter(category);
+
     res.render("category.ejs", {
-      category: category,
+      category: capitalizedCategory,
       menu: filteredMenu,
     });
 });
