@@ -5,6 +5,12 @@ app.get("/", function(req, res) {
   res.render("home.ejs");
 });
 
+app.get("/menu", function(req, res){
+  res.render("menu.ejs");
+}
+
+
+
 const RESTAURANT = {
   name: "The Green Byte Bistro",
   isOpen: true,
