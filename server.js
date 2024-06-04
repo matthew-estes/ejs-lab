@@ -63,7 +63,9 @@ app.get("/", function(req, res) {
 });
 
 app.get("/menu", function(req, res){
-  res.render("menu.ejs");
+  res.render("menu.ejs", {
+    menu: RESTAURANT.menu,
+  });
 });
 
 
