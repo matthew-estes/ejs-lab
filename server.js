@@ -69,7 +69,11 @@ app.get("/menu", function(req, res){
 });
 
 
-
+app.get("/menu/:category", function(req, res){
+  res.render("category.ejs", {
+    category: RESTAURANT.category,
+  });
+});
 
 
 
